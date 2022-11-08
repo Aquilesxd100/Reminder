@@ -1,0 +1,132 @@
+@charset "UTF-8";
+@font-face {
+    font-family: hobo;
+    src: url("font/hobostd.woff");
+}
+@font-face {
+    font-family: comic;
+    src: url("font/comic.ttf");
+}
+@font-face {   
+    font-family: comicbd;
+    src: url("font/comicbd.ttf");
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    max-height: 100vh;
+    min-height: 100vh;
+    max-width: 100%;
+    background-image: url("img/fundo.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+main {
+    width: 100%;
+    height: calc(100vh - 55px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+section.formulario {
+    right: 0;
+    margin: 0 8vw;
+    width: 40vw;
+    height: 40vw;
+    max-height: calc(90vh - 55px);
+    background-image: url("backup/stick-notes.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+section.formulario hr {
+    background-color: #31BCD5;
+    box-shadow: 1px 1px 1px;
+    height: 4px;
+    border: none;
+    margin-bottom: 3%;
+}
+a {
+    color: #00FFFF;
+    text-underline-position: under;
+}
+h2 {
+    font-family: comicbd;
+    text-align: center;
+    font-size: calc(23px + 1vw);
+    font-weight: lighter;
+    color: #72D1E2;
+    text-shadow: 1.5px 0 0 rgb(0, 0, 0), -1.5px 0 0 rgb(0, 0, 0), 0 1.5px 0 rgb(0, 0, 0),  0 -1.5px 0 rgb(0, 0, 0),  0 0 1.5px rgb(0, 0, 0);
+}
+h3 {
+    color: #FFFFFF;
+    text-shadow: 1.5px 0 0 rgb(0, 0, 0), -1.5px 0 0 rgb(0, 0, 0), 0 1.5px 0 rgb(0, 0, 0),  0 -1.5px 0 rgb(0, 0, 0),  0 0 1.5px rgb(0, 0, 0);
+    font-family: comic;
+    font-size: calc(11px + 1vw);
+}
+h4 {
+    font-family: comic;
+    font-weight: normal;
+    color: #00FFFF;
+    font-size: calc(7px + 1vw);
+    text-shadow: 1px 0 0 rgb(0, 0, 0), -1px 0 0 rgb(0, 0, 0), 0 1px 0 rgb(0, 0, 0),  0 -1px 0 rgb(0, 0, 0),  0 0 1px rgb(0, 0, 0);
+}
+section.formulario form {
+    position: relative;
+    top: 120px;
+    left: 125px;
+    width: 50%;
+    height: 25vw;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+section.formulario form input {
+    font-size: calc(11px + 1vw);
+    width: 80%;
+    height: 3vw;
+    margin: 2% 10%;
+    border: 2px solid #2296AA;
+    box-shadow: 2px 1.5px 1.5px; 
+    background-color: #E6F7FA;
+}
+section.formulario form button {
+    margin: 1% 5% 0.5% 5%;
+    width: 90%;
+    height: 3vw;
+    border: 3px solid #00BB00;
+    border-radius: 5px;
+    box-shadow: 2px 1.5px 1.5px; 
+    background-color: #80FF00;
+}
+section.logo img {
+    left: 0;
+    height: 27vw;
+    max-height: calc(80vh - 55px);
+    width: 27vw;
+    margin: 0 8vw;
+}
+footer {
+    position: fixed;
+    display: grid;
+    align-items: center;
+    border-top: 5px solid #007FFF;
+    bottom: 0;
+    width: 100vw;
+    height: 55px;
+    min-height: 5vh;
+    background-image: url("img/footer.jpg");
+    background-repeat: repeat-x;
+    background-size: contain;
+}
+footer h3 {
+    font-size: calc(13px + 1vw);
+    font-family: hobo;
+    font-weight: normal;
+    color: #84C1FF;
+    text-shadow: 1.5px 0 0 rgb(0, 0, 0), -1.5px 0 0 rgb(0, 0, 0), 0 1.5px 0 rgb(0, 0, 0),  0 -1.5px 0 rgb(0, 0, 0),  0 0 1.5px rgb(0, 0, 0);
+    letter-spacing: 1px;
+    text-align: center;
+}
