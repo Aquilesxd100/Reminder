@@ -47,6 +47,7 @@ section.formulario hr {
     height: 4px;
     border: none;
     margin-bottom: 3%;
+    width: 100%;
 }
 a {
     color: #00FFFF;
@@ -71,35 +72,50 @@ h4 {
     font-weight: normal;
     color: #00FFFF;
     font-size: calc(7px + 1vw);
-    text-shadow: 1px 0 0 rgb(0, 0, 0), -1px 0 0 rgb(0, 0, 0), 0 1px 0 rgb(0, 0, 0),  0 -1px 0 rgb(0, 0, 0),  0 0 1px rgb(0, 0, 0);
+    text-shadow: 1.1px 0 0 rgb(0, 0, 0), -1.1px 0 0 rgb(0, 0, 0), 0 1.1px 0 rgb(0, 0, 0),  0 -1.1px 0 rgb(0, 0, 0),  0 0 1.1px rgb(0, 0, 0);
+}
+ol.display {
+    position: absolute;
+    top: calc(28px + 1.75vw);
+    list-style: none;
+    font-size: calc(7px + 1vw);
+    font-family: comic;
+    color: #BBBBBB;
+    text-align: center;
+    pointer-events: none;
+}
+ol.display li {
+    margin: calc(0px + 1.6vw) 0;
 }
 section.formulario form {
     position: relative;
-    top: 120px;
-    left: 125px;
+    top: 22%;
+    left: 9.2vw;
     width: 50%;
-    height: 25vw;
     display: flex;
     flex-direction: column;
-    text-align: center;
+    align-items: center;
 }
 section.formulario form input {
     font-size: calc(11px + 1vw);
     width: 80%;
     height: 3vw;
     margin: 2% 10%;
+    padding: 0 2%;
     border: 2px solid #2296AA;
     box-shadow: 2px 1.5px 1.5px; 
     background-color: #E6F7FA;
 }
+section.formulario form input:focus {
+    outline: none;
+}
 section.formulario form button {
     margin: 1% 5% 0.5% 5%;
     width: 90%;
-    height: 3vw;
     border: 3px solid #00BB00;
     border-radius: 5px;
     box-shadow: 2px 1.5px 1.5px; 
-    background-color: #80FF00;
+    background-color: #00BB00;
 }
 section.logo img {
     left: 0;

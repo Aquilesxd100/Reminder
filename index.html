@@ -16,8 +16,12 @@
             <form>
                 <h2>Entrar</h2>
                 <hr>
-                <input type="text" maxlength="11">
-                <input type="password" maxlength="15">
+                <ol class="display">
+                    <li id="login">Login</li>
+                    <li id="senha">Senha</li>
+                </ol>
+                <input type="text" maxlength="10" class="input-login" onclick="displayOff('login')">
+                <input type="password" maxlength="15" class="input-senha" onclick="displayOff('senha')">
                 <button><h3>Entrar</h3></button>
                 <a href="nova_conta.html" targe="_self"><h4>Criar Conta</h4></a>
             </form>
@@ -26,5 +30,6 @@
     <footer>
         <h3>Organizando o presente para garantir sucesso ao seu futuro!</h3>
     </footer>
+    <script src="funcoes.js"></script>
 </body>
 </html>
