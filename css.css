@@ -31,13 +31,14 @@ main {
     align-items: center;
     justify-content: center;
 }
+/* Login + Base */
 section.formulario {
     right: 0;
     margin: 0 8vw;
     width: 40vw;
     height: 40vw;
     max-height: calc(90vh - 55px);
-    background-image: url("backup/stick-notes.png");
+    background-image: url("img/stick-notes.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
@@ -49,6 +50,14 @@ section.formulario hr {
     margin-bottom: 3%;
     width: 100%;
 }
+/* Nova Conta */
+body section.nova-conta {
+    background-image: url("img/nova_conta.png");
+}
+section.nova-conta h2 {
+    font-size: calc(8px + 2.2vw);
+}
+/* Padrões */
 a {
     color: #00FFFF;
     text-underline-position: under;
@@ -117,6 +126,16 @@ section.formulario form button {
     box-shadow: 2px 1.5px 1.5px; 
     background-color: #00BB00;
 }
+section.formulario form button:hover {
+    cursor: pointer;
+    background-color: #00E100;
+    border: 3px solid #00E100;
+}
+.botao-input {
+    animation-name: botao-input;
+    animation-duration: 0.28s;
+    animation-fill-mode: none;
+}
 section.logo img {
     left: 0;
     height: 27vw;
@@ -145,4 +164,9 @@ footer h3 {
     text-shadow: 1.5px 0 0 rgb(0, 0, 0), -1.5px 0 0 rgb(0, 0, 0), 0 1.5px 0 rgb(0, 0, 0),  0 -1.5px 0 rgb(0, 0, 0),  0 0 1.5px rgb(0, 0, 0);
     letter-spacing: 1px;
     text-align: center;
+}
+@keyframes botao-input {
+    0% {transform:scale(1);}
+    50% {transform:scale(0.92);}
+    100% {transform:scale(1);}
 }

@@ -4,9 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bem Vindo!</title>
+    <title>Reminder</title>
+    <link rel="stylesheet" type="text/css" href="css.css"/>
 </head>
 <body>
-    
+    <main>
+        <section class="logo">
+            <img class="logo" src="img/logo.png">
+        </section>  
+        <section class="formulario nova-conta">
+            <form>
+                <h2>Criar Conta</h2>
+                <hr>
+                <ol class="display">
+                    <li id="login">Login</li>
+                    <li id="senha">Senha</li>
+                    <li id="repita-senha">Repita a Senha</li>
+                </ol>
+                <input type="text" maxlength="10" class="input-login" required>
+                <input type="password" maxlength="15" class="input-senha" required>
+                <input type="password" maxlength="15" class="repita-input-senha" required>
+                <button onclick="botaoInput()" type="button"><h3>Criar Conta</h3></button>
+                <a href="index.html" targe="_self"><h4>Já tenho uma conta</h4></a>
+            </form>
+        </section>  
+    </main>
+    <footer>
+        <h3>Organizando o presente para garantir sucesso ao seu futuro!</h3>
+    </footer>
+    <script src="funcoes.js"></script>
 </body>
 </html>
