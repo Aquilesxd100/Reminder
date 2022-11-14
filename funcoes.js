@@ -7,22 +7,68 @@ const formulario = document.querySelector("form");
         formulario.addEventListener("submit", (event) => {
             event.preventDefault();
             let bancoDados = [];
-            
-            if (localStorage.contas) {
-                bancoDados = JSON.parse(localStorage.getItem("contas"));
+            if (validacaoCriacao() === false) {
+                if (localStorage.contas) {
+                    bancoDados = JSON.parse(localStorage.getItem("contas"));
+                }
+                bancoDados.push({
+                    login: inputLogin.value,
+                    senha: inputSenha.value,
+                });
+                localStorage.contas = JSON.stringify(bancoDados);
+                console.log(localStorage.getItem("contas"));
             }
-            bancoDados.push({
-                login: inputLogin.value,
-                senha: inputSenha.value,
-            });
-            localStorage.contas = JSON.stringify(bancoDados);
-            console.log(localStorage.getItem("contas"));
+            else {
+                document.getElementById("erro-senha").style.opacity="1";
+            }
         });
     };
     function deletaConta() {
         localStorage.removeItem("contas");
         console.log(localStorage.getItem("contas"));
     }
+    // Validação Criação da Conta //
+        function validacaoCriacao() {
+            let erro = false;
+            let letras = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+            if (inputSenha.value.length < 4) {
+                document.getElementById("img-senha-digitos").src="img/erro.png";
+                erro = true;
+            }
+            else {
+                document.getElementById("img-senha-digitos").src="img/confirmacao.png";
+            }
+            if (inputSenha.value !== repitaSenha.value) {
+                document.getElementById("img-senha-senhas-iguais").src="img/erro.png";
+                erro = true;
+            }
+            else {
+                document.getElementById("img-senha-senhas-iguais").src="img/confirmacao.png";
+            }
+            let checkLetra = () => {
+                for (letra of letras) {
+                    if (inputSenha.value.includes(letra) === true) {
+                        return true;
+                    }
+                };
+                return false;
+            };
+            let checkNumero = () => {
+                for () {
+                    
+                }
+            };
+            console.log(checkLetra);
+            console.log(checkNumero);
+            if (checkLetra() === false && checkNumero() === false) {
+                document.getElementById("img-senha-letra-numero").src="img/erro.png";
+                erro = true;
+            }
+            else {
+                document.getElementById("img-senha-letra-numero").src="img/confirmacao.png";
+            }
+            return erro;
+        }
 // Entrar na Conta //  
     if (formulario.name === "logging") {
         formulario.addEventListener("submit", (event) => {
