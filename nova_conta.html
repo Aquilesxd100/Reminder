@@ -9,22 +9,17 @@
 </head>
 <body>
     <main>
-        <section class="logo">
+        <section class="logo" onclick="deletaConta()">
             <img class="logo" src="img/logo.png">
         </section>  
         <section class="formulario nova-conta">
-            <form>
+            <form name="criacao-conta">
                 <h2>Criar Conta</h2>
                 <hr>
-                <ol class="display">
-                    <li id="login">Login</li>
-                    <li id="senha">Senha</li>
-                    <li id="repita-senha">Repita a Senha</li>
-                </ol>
-                <input type="text" maxlength="10" class="input-login" required>
-                <input type="password" maxlength="15" class="input-senha" required>
-                <input type="password" maxlength="15" class="repita-input-senha" required>
-                <button onclick="botaoInput()" type="button"><h3>Criar Conta</h3></button>
+                <input type="text" maxlength="10" class="input-login" placeholder="Login" required>
+                <input type="password" maxlength="15" class="input-senha" placeholder="Senha" required>
+                <input type="password" maxlength="15" class="repita-input-senha" placeholder="Repita a Senha" required>
+                <button onclick="botaoInput()" type="submit" id="botao-criar-conta"><h3>Criar Conta</h3></button>
                 <a href="index.html" targe="_self"><h4>Já tenho uma conta</h4></a>
             </form>
         </section>  
