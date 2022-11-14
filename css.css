@@ -53,9 +53,47 @@ section.formulario hr {
 /* Nova Conta */
 body section.nova-conta {
     background-image: url("img/nova_conta.png");
+    max-height: calc(95vh - 55px);
 }
 section.nova-conta h2 {
     font-size: calc(8px + 2.2vw);
+}
+body section.nova-conta form {
+    top: 20%;
+}
+div#erro-senha {
+    position: absolute;
+    pointer-events: none;
+    opacity: 1;
+    top: -2vw;
+    right: 18vw;
+    height: 11.8vw;
+    width: 33.5vw;
+    min-width: 360px;
+    min-height: 110px;
+    font-family: comic;
+    color: #FFFFFF;
+    background-image: url("img/input-erro-senha.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding: 0.3vw 3.5vw 0.2vw 1.5vw;
+}
+div#erro-senha h3 {
+    font-size: calc(11px + 1vw);
+    margin: 5px 0;
+}
+div#erro-senha ul {
+    list-style: none;
+    font-size: calc(5px + 1vw);
+    font-weight: bolder;
+    letter-spacing: 0.02vw;
+    text-shadow: 1.35px 0 0 rgb(0, 0, 0), -1.35px 0 0 rgb(0, 0, 0), 0 1.35px 0 rgb(0, 0, 0),  0 -1.35px 0 rgb(0, 0, 0),  0 0 1.35px rgb(0, 0, 0);
+}
+div#erro-senha li img {
+    position: relative;
+    top: 0.45vw;
+    margin-right: 5px;
+    width: 1.8vw;
 }
 /* Padrões */
 a {
@@ -93,7 +131,7 @@ section.formulario form {
     align-items: center;
 }
 section.formulario form input {
-    font-size: calc(11px + 1vw);
+    font-size: calc(5px + 1.4vw);
     width: 80%;
     height: 3vw;
     margin: 2% 10%;

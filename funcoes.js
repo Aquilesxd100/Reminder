@@ -7,6 +7,7 @@ const formulario = document.querySelector("form");
         formulario.addEventListener("submit", (event) => {
             event.preventDefault();
             let bancoDados = [];
+            
             if (localStorage.contas) {
                 bancoDados = JSON.parse(localStorage.getItem("contas"));
             }
