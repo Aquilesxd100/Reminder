@@ -61,7 +61,7 @@ section.nova-conta h2 {
 body section.nova-conta form {
     top: 20%;
 }
-div#erro-senha {
+div#erro-senha, div#erro-login {
     position: absolute;
     pointer-events: none;
     opacity: 0;
@@ -73,24 +73,24 @@ div#erro-senha {
     min-height: 110px;
     font-family: comic;
     color: #FFFFFF;
-    background-image: url("img/input-erro-senha.png");
+    background-image: url("img/input-erro.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     padding: 0.3vw 3.5vw 0.2vw 1.5vw;
     transition: opacity 0.3s ease-in-out;
 }
-div#erro-senha h3 {
+div#erro-senha h3, div#erro-login h3 {
     font-size: calc(11px + 1vw);
     margin: 5px 0;
 }
-div#erro-senha ul {
+div#erro-senha ul, div#erro-login ul {
     list-style: none;
     font-size: calc(5px + 1vw);
     font-weight: bolder;
     letter-spacing: 0.02vw;
     text-shadow: 1.35px 0 0 rgb(0, 0, 0), -1.35px 0 0 rgb(0, 0, 0), 0 1.35px 0 rgb(0, 0, 0),  0 -1.35px 0 rgb(0, 0, 0),  0 0 1.35px rgb(0, 0, 0);
 }
-div#erro-senha li img {
+div#erro-senha li img, div#erro-login li img {
     position: relative;
     top: 0.3vw;
     margin-right: 5px;

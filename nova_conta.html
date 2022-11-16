@@ -16,7 +16,17 @@
             <form name="criacao-conta">
                 <h2>Criar Conta</h2>
                 <hr>
-                <input type="text" maxlength="10" class="input-login" placeholder="Login" required>
+                <div style="position: relative;">
+                    <input type="text" maxlength="10" class="input-login" placeholder="Login" required>
+                    <div id="erro-login">
+                        <h3>A senha precisa ter:</h3>
+                        <ul>
+                            <li><img src="img/confirmacao.png" id="img-senha-digitos">Pelo menos 4 dígitos.</li>
+                            <li><img src="img/confirmacao.png" id="img-senha-letra-numero">Pelo menos um número e uma letra.</li>
+                            <li><img src="img/confirmacao.png" id="img-senha-senhas-iguais">Ambas as senhas precisam ser iguais.</li>
+                        </ul>
+                    </div>
+                </div>
                 <div style="position: relative;">
                     <input type="password" maxlength="15" class="input-senha" placeholder="Senha" required>
                     <div id="erro-senha">
