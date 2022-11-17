@@ -2,12 +2,21 @@ const inputLogin = document.querySelector(".input-login");
 const inputSenha = document.querySelector(".input-senha");
 const repitaSenha = document.querySelector(".repita-input-senha");
 const formulario = document.querySelector("form");
+const botaoSubmit = document.querySelector("#botao-criar-conta");
+const erroLogin = document.querySelector("#erro-login");
+const erroSenha = document.querySelector("#erro-senha");
+let erroSenhaON = false;
+let erroLoginON = false;
+let erroCriacaoSenha = () => {};
+let erroCriacaoLogin = () => {};
 // Criar Conta //
     if (formulario.name === "criacao-conta") {
         formulario.addEventListener("submit", (event) => {
             event.preventDefault();
             let bancoDados = [];
-            if (validacaoLogin() === true && validacaoSenha() === true) {
+            let validLogin = validacaoLogin();
+            let validSenha = validacaoSenha();
+            if (validLogin === true && validSenha === true) {
                 if (localStorage.contas) {
                     bancoDados = JSON.parse(localStorage.getItem("contas"));
                 };
@@ -16,6 +25,8 @@ const formulario = document.querySelector("form");
                     senha: inputSenha.value,
                 });
                 localStorage.contas = JSON.stringify(bancoDados);
+                erroLogin.style.opacity="0";
+                erroSenha.style.opacity="0";
                 console.log(localStorage.getItem("contas"));
             }
         });
@@ -25,29 +36,81 @@ const formulario = document.querySelector("form");
         console.log(localStorage.contas);
     }
     // Validação Criação da Conta //
+        window.addEventListener("click", (event) => {
+            let elementosAlvo = [inputLogin, inputSenha, repitaSenha, erroLogin, erroSenha, botaoSubmit];
+            let clickFora = 0;
+            for (c = 0; c < elementosAlvo.length; c++) {
+                if (elementosAlvo[c].contains(event.target)) {
+                }
+                else {
+                    clickFora++;
+                }
+            }
+            if (clickFora === elementosAlvo.length) {
+                if (erroSenhaON === true) {
+                    erroSenhaON = false;
+                    erroSenha.style.opacity="0";
+                    erroCriacaoLogin();
+                    erroCriacaoLogin = () => {};
+                }
+                if (erroLoginON === true) {
+                    erroLoginON = false;
+                    erroLogin.style.opacity="0";
+                    erroCriacaoSenha();
+                    erroCriacaoSenha = () => {};
+                }
+            }
+        })
         function validacaoLogin() {
             let contas = [];
             let validacao = true;
             if (localStorage.contas) {
                 contas = JSON.parse(localStorage.contas);
-                contas.forEach((conta) => {
+                for (conta of contas) {
                     if (conta.login === inputLogin.value) {
                         validacao = false;
-                        //mudar icone especifico para ERRO//      
+                        document.getElementById("img-login-repetido").src="img/erro.png";
+                        break;
                     }
-                })
+                    else {
+                        document.getElementById("img-login-repetido").src="img/confirmacao.png";
+                    }
+                }
             }
             if (inputLogin.value.length < 4) {
                 validacao = false;
-                //mudar icone especifico para ERRO//
+                document.getElementById("img-login-digitos").src="img/erro.png";
             }  
-            if (inputLogin.value !== (inputLogin.value).toLowerCase()) {
+            else {
+                document.getElementById("img-login-digitos").src="img/confirmacao.png";
+            }
+            if (inputLogin.value !== inputLogin.value.toLowerCase()) {
                 validacao = false;
-                //mudar icone especifico para ERRO//
+                document.getElementById("img-login-minusculo").src="img/erro.png";
+            }
+            else {
+                document.getElementById("img-login-minusculo").src="img/confirmacao.png";
             }
             if (validacao === false) {
-                document.getElementById("erro-login").style.opacity="1";
+                if (erroSenhaON === false) {
+                    erroLoginON = true;
+                    erroLogin.style.opacity="1";
+                }
+                else {
+                    erroCriacaoLogin = () => {
+                        erroLogin.style.opacity="1";
+                        erroLoginON = true;
+                    };
+                }
                 inputLogin.style.border="2px solid #FF0000";
+            }
+            else {
+                erroCriacaoLogin = () => {};
+                erroLoginON = false;
+                erroLogin.style.opacity="0";
+                inputLogin.style.border="2px solid #2296AA";
+                erroCriacaoSenha();
+                erroCriacaoSenha = () => {};
             }
             return validacao;
         }  
@@ -92,9 +155,27 @@ const formulario = document.querySelector("form");
                 document.getElementById("img-senha-letra-numero").src="img/confirmacao.png";
             }
             if (validacao === false) {
-                document.getElementById("erro-senha").style.opacity="1";
+                if (erroLoginON === false) {
+                    erroSenhaON = true;
+                    erroSenha.style.opacity="1";
+                }
+                else {
+                    erroCriacaoSenha = () => {
+                        erroSenha.style.opacity="1";
+                        erroSenhaON = true;
+                    };
+                }
                 inputSenha.style.border="2px solid #FF0000";
                 repitaSenha.style.border="2px solid #FF0000";
+            }
+            else {
+                erroCriacaoSenha = () => {};
+                erroSenhaON = false;
+                erroSenha.style.opacity="0";
+                inputSenha.style.border="2px solid #2296AA";
+                repitaSenha.style.border="2px solid #2296AA";
+                erroCriacaoLogin();
+                erroCriacaoLogin = () => {};
             }
             return validacao;
         }
