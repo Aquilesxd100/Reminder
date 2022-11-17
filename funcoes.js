@@ -25,42 +25,44 @@ let erroCriacaoLogin = () => {};
                     senha: inputSenha.value,
                 });
                 localStorage.contas = JSON.stringify(bancoDados);
+                sessionStorage.setItem("novaConta", "ON");
                 erroLogin.style.opacity="0";
                 erroSenha.style.opacity="0";
-                console.log(localStorage.getItem("contas"));
+                window.open("index.html", "_self");
             }
         });
     };
     function deletaConta() {
         localStorage.clear();
-        console.log(localStorage.contas);
     }
     // Validação Criação da Conta //
-        window.addEventListener("click", (event) => {
-            let elementosAlvo = [inputLogin, inputSenha, repitaSenha, erroLogin, erroSenha, botaoSubmit];
-            let clickFora = 0;
-            for (c = 0; c < elementosAlvo.length; c++) {
-                if (elementosAlvo[c].contains(event.target)) {
+        if (formulario.name === "criacao-conta") {
+            window.addEventListener("click", (event) => {
+                let elementosAlvo = [inputLogin, inputSenha, repitaSenha, erroLogin, erroSenha, botaoSubmit];
+                let clickFora = 0;
+                for (c = 0; c < elementosAlvo.length; c++) {
+                    if (elementosAlvo[c].contains(event.target)) {
+                    }
+                    else {
+                        clickFora++;
+                    }
                 }
-                else {
-                    clickFora++;
+                if (clickFora === elementosAlvo.length) {
+                    if (erroSenhaON === true) {
+                        erroSenhaON = false;
+                        erroSenha.style.opacity="0";
+                        erroCriacaoLogin();
+                        erroCriacaoLogin = () => {};
+                    }
+                    if (erroLoginON === true) {
+                        erroLoginON = false;
+                        erroLogin.style.opacity="0";
+                        erroCriacaoSenha();
+                        erroCriacaoSenha = () => {};
+                    }
                 }
-            }
-            if (clickFora === elementosAlvo.length) {
-                if (erroSenhaON === true) {
-                    erroSenhaON = false;
-                    erroSenha.style.opacity="0";
-                    erroCriacaoLogin();
-                    erroCriacaoLogin = () => {};
-                }
-                if (erroLoginON === true) {
-                    erroLoginON = false;
-                    erroLogin.style.opacity="0";
-                    erroCriacaoSenha();
-                    erroCriacaoSenha = () => {};
-                }
-            }
-        })
+            })
+        }
         function validacaoLogin() {
             let contas = [];
             let validacao = true;
@@ -181,20 +183,26 @@ let erroCriacaoLogin = () => {};
         }
 // Entrar na Conta //  
     if (formulario.name === "logging") {
+        if (localStorage.logado === "ON") {
+            window.open("recados.html", "_self");
+        }
+        if (sessionStorage.novaConta === "ON") {
+            let avisoNovaConta = document.querySelector(".notificacao-nova-conta");
+            sessionStorage.removeItem("novaConta");
+            avisoNovaConta.classList.add("novaContaAviso");
+        }
         formulario.addEventListener("submit", (event) => {
             event.preventDefault();
             if (localStorage.contas) {
                 let bancoDados = JSON.parse(localStorage.getItem("contas"));
                 let posicao = bancoDados.findIndex((conta) => conta.login === inputLogin.value);
-                console.log(posicao);
-                console.log(bancoDados[posicao]);
-                if (posicao !== -1) {
-                    if (bancoDados[posicao].senha === inputSenha.value) {
-                        alert("Login Efetuado com Sucesso!");
-                    }
-                    else {
-                        alert("Login ou Senha Incorretos!");
-                    }
+                if (posicao !== -1 && bancoDados[posicao].senha === inputSenha.value) {
+                    alert("Login Efetuado com Sucesso!");
+                    localStorage.contaLogada = JSON.stringify({
+                        login: bancoDados[posicao].login,
+                        posicao: posicao,
+                    });
+                    console.log(localStorage.contaLogada);
                 }
                 else {
                     alert("Login ou Senha Incorretos!");

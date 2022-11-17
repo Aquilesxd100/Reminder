@@ -50,6 +50,38 @@ section.formulario hr {
     margin-bottom: 3%;
     width: 100%;
 }
+.notificacao-nova-conta {
+    position: fixed;
+    top: -16vh;
+    /* top: -16vh; SUMIR*/
+    /* top: calc(-8vh + 4px); APARECER*/
+    background-color: #ACFFAA;
+    height: 15vh;
+    min-height: 80px;
+    width: 52vw;
+    margin: 0 calc(24vw - 4px) 0 calc(24vw - 4px);
+    z-index: 1000;
+    border-radius: 20px;
+    box-shadow: rgba(0,0,0,0.9) 0 0 20px;
+    border: 4px solid #39E600;
+}
+.notificacao-nova-conta h3 {
+    font-size: calc(11px + 1vw);
+    color: #4FFF4F;
+    letter-spacing: 0.1vw;
+    text-align: center;
+    margin-top: calc(8.5vh - 8px);
+}
+.notificacao-nova-conta h3 img {
+    position: relative;
+    top: 0.3vw;
+    margin-right: 5px;
+    width: calc(1.5vw + 2px);
+    margin: 0 5px;
+}
+.notificacao-nova-conta span {
+    margin: 0 5px;
+}
 /* Nova Conta */
 body section.nova-conta {
     background-image: url("img/nova_conta.png");
@@ -162,11 +194,6 @@ section.formulario form button:hover {
     background-color: #00E100;
     border: 3px solid #00E100;
 }
-.botao-input {
-    animation-name: botao-input;
-    animation-duration: 0.28s;
-    animation-fill-mode: none;
-}
 section.logo img {
     left: 0;
     height: 27vw;
@@ -196,8 +223,26 @@ footer h3 {
     letter-spacing: 1px;
     text-align: center;
 }
+/* Animações */
+.botao-input {
+    animation-name: botao-input;
+    animation-duration: 0.28s;
+    animation-fill-mode: none;
+}
 @keyframes botao-input {
     0% {transform:scale(1);}
     50% {transform:scale(0.92);}
     100% {transform:scale(1);}
+}
+.novaContaAviso {
+    animation-name: nova-conta-notif;
+    animation-duration: 4.4s;
+    animation-delay: 0.3s;
+    animation-fill-mode: forwards;
+}
+@keyframes nova-conta-notif {
+    0% {transform:translateY(0vh);}
+    16% {transform:translateY(calc(8vh + 4px));}
+    84% {transform:translateY(calc(8vh + 4px));}
+    100% {transform:translateY(0vh);}
 }
