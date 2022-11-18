@@ -1,10 +1,12 @@
 const inputLogin = document.querySelector(".input-login");
 const inputSenha = document.querySelector(".input-senha");
 const repitaSenha = document.querySelector(".repita-input-senha");
+const checkBox = document.getElementById("input-checkbox");
 const formulario = document.querySelector("form");
-const botaoSubmit = document.querySelector("#botao-criar-conta");
+const botaoSubmit = document.querySelector("#botao-padrao");
 const erroLogin = document.querySelector("#erro-login");
 const erroSenha = document.querySelector("#erro-senha");
+const erroLogging = document.querySelector("#erro-logar");
 let erroSenhaON = false;
 let erroLoginON = false;
 let erroCriacaoSenha = () => {};
@@ -34,6 +36,7 @@ let erroCriacaoLogin = () => {};
     };
     function deletaConta() {
         localStorage.clear();
+        sessionStorage.clear();
     }
     // Validação Criação da Conta //
         if (formulario.name === "criacao-conta") {
@@ -54,7 +57,7 @@ let erroCriacaoLogin = () => {};
                         erroCriacaoLogin();
                         erroCriacaoLogin = () => {};
                     }
-                    if (erroLoginON === true) {
+                    else if (erroLoginON === true) {
                         erroLoginON = false;
                         erroLogin.style.opacity="0";
                         erroCriacaoSenha();
@@ -183,7 +186,21 @@ let erroCriacaoLogin = () => {};
         }
 // Entrar na Conta //  
     if (formulario.name === "logging") {
-        if (localStorage.logado === "ON") {
+            window.addEventListener("click", (event) => {
+                let elementosAlvo = [inputLogin, inputSenha, botaoSubmit, erroLogging];
+                let clickFora = 0;
+                for (c = 0; c < elementosAlvo.length; c++) {
+                    if (elementosAlvo[c].contains(event.target)) {
+                    }
+                    else {
+                        clickFora++;
+                    }
+                }
+                if (clickFora === elementosAlvo.length) {
+                    erroLogging.style.opacity="0";
+                }
+            })
+        if (sessionStorage.contaLogada || localStorage.contaLogada) {
             window.open("recados.html", "_self");
         }
         if (sessionStorage.novaConta === "ON") {
@@ -197,22 +214,39 @@ let erroCriacaoLogin = () => {};
                 let bancoDados = JSON.parse(localStorage.getItem("contas"));
                 let posicao = bancoDados.findIndex((conta) => conta.login === inputLogin.value);
                 if (posicao !== -1 && bancoDados[posicao].senha === inputSenha.value) {
-                    alert("Login Efetuado com Sucesso!");
-                    localStorage.contaLogada = JSON.stringify({
-                        login: bancoDados[posicao].login,
-                        posicao: posicao,
-                    });
-                    console.log(localStorage.contaLogada);
+                    if (checkBox.checked === true) {
+                        localStorage.contaLogada = JSON.stringify({
+                            login: bancoDados[posicao].login,
+                            posicao: posicao,
+                        });
+                    }
+                    else {
+                        sessionStorage.contaLogada = JSON.stringify({
+                            login: bancoDados[posicao].login,
+                            posicao: posicao,
+                        });
+                    }
+                    window.open("recados.html", "_self");
                 }
                 else {
-                    alert("Login ou Senha Incorretos!");
+                    erroLogging.style.opacity="1";
+                    inputLogin.style.border="2px solid #FF0000";
+                    inputSenha.style.border="2px solid #FF0000";
                 }
             }
             else {
-                alert("Nenhuma conta cadastrada no sistema!");
+                erroLogging.style.opacity="1";
+                inputLogin.style.border="2px solid #FF0000";
+                inputSenha.style.border="2px solid #FF0000";
             }
         });
     };
+// Página de Recados //    
+    if (formulario.name === "recados") {
+        if (!sessionStorage.contaLogada && !localStorage.contaLogada) {
+            window.open("index.html", "_self");
+        }
+    }
 // Efeitos Visuais //
 function displayOn () {
     if (inputLogin.value === "") {

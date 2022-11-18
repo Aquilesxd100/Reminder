@@ -23,6 +23,7 @@ body {
     background-image: url("img/fundo.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
 }
 main {
     width: 100%;
@@ -53,8 +54,6 @@ section.formulario hr {
 .notificacao-nova-conta {
     position: fixed;
     top: -16vh;
-    /* top: -16vh; SUMIR*/
-    /* top: calc(-8vh + 4px); APARECER*/
     background-color: #ACFFAA;
     height: 15vh;
     min-height: 80px;
@@ -82,6 +81,33 @@ section.formulario hr {
 .notificacao-nova-conta span {
     margin: 0 5px;
 }
+div.manter-logado {
+    font-size: calc(5px + 1vw);
+    text-shadow: 1px 0 0 rgb(0, 0, 0), -1px 0 0 rgb(0, 0, 0), 0 1px 0 rgb(0, 0, 0),  0 -1px 0 rgb(0, 0, 0),  0 0 1px rgb(0, 0, 0);
+    font-family: comic;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    color: #72D1E2;
+    width: 20vw;
+    min-width: 200px;
+    margin: 0.5% 1% 1% 1%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+section.formulario form div.manter-logado input {
+    width: auto;
+    height: auto;
+    margin: 8px;
+    transform: scale(1.7);
+    box-shadow: none; 
+    background-color: #E6F7FA;
+}
+div.manter-logado label {
+    white-space: nowrap;
+    padding-bottom: 0.2vw;
+    user-select: none;
+}
 /* Nova Conta */
 body section.nova-conta {
     background-image: url("img/nova_conta.png");
@@ -93,7 +119,7 @@ section.nova-conta h2 {
 body section.nova-conta form {
     top: 20%;
 }
-div#erro-senha, div#erro-login {
+div#erro-senha, div#erro-login, div#erro-logar {
     position: absolute;
     pointer-events: none;
     opacity: 0;
@@ -111,22 +137,78 @@ div#erro-senha, div#erro-login {
     padding: 0.3vw 3.5vw 0.2vw 1.5vw;
     transition: opacity 0.3s ease-in-out;
 }
-div#erro-senha h3, div#erro-login h3 {
+body div#erro-logar {
+    top: -2.5vw;
+    right: 18vw;
+    height: 7vw;
+    width: 25vw;
+    min-width: 220px;
+    min-height: 80px;
+}
+div#erro-senha h3, div#erro-login h3, div#erro-logar h3 {
     font-size: calc(11px + 1vw);
     margin: 5px 0;
 }
-div#erro-senha ul, div#erro-login ul {
+div#erro-senha ul, div#erro-login ul, div#erro-logar ul {
     list-style: none;
     font-size: calc(5px + 1vw);
     font-weight: bolder;
     letter-spacing: 0.02vw;
     text-shadow: 1.35px 0 0 rgb(0, 0, 0), -1.35px 0 0 rgb(0, 0, 0), 0 1.35px 0 rgb(0, 0, 0),  0 -1.35px 0 rgb(0, 0, 0),  0 0 1.35px rgb(0, 0, 0);
 }
-div#erro-senha li img, div#erro-login li img {
+div#erro-senha li img, div#erro-login li img, div#erro-logar li img {
     position: relative;
     top: 0.3vw;
     margin-right: 5px;
     width: 1.8vw;
+}
+/* Recados */
+main.recados {
+    height: 100vh;
+}
+header {
+    position: relative;
+    width: 100%;
+}
+div.logo-menor img {
+    float: left;
+    width: 15vw;
+    margin: 1.5vw;
+}
+div.painel-conta {
+    display: flex;
+    align-items: center;
+    float: right;
+    background-color: blue;
+    border-radius: 4vw;
+    margin: 1.5vw;
+    border: 5px solid #2296AA;
+    box-shadow: #000000cc 0 0 3px;
+}
+div.painel-conta h3 {
+    color: #FFFFFF;
+    text-shadow: 1.5px 0 0 rgb(0, 0, 0), -1.5px 0 0 rgb(0, 0, 0), 0 1.5px 0 rgb(0, 0, 0),  0 -1.5px 0 rgb(0, 0, 0),  0 0 1.5px rgb(0, 0, 0);
+    font-size: calc(8px + 1vw);
+    margin: 5px;
+}
+div.icone-usuario {
+    display: flex;
+    align-items: center;
+    margin: 5px;
+}
+div.icone-usuario img {
+    display: block;
+    float: left;
+    width: 3.5vw;
+}
+div.botao-sair {
+    border-left: 4px solid #2296AA;
+    height: 100%;
+}
+div.botao-sair img {
+    display: block;
+    width: 3vw;
+    margin: 5px;
 }
 /* Padrões */
 a {
