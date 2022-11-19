@@ -1,11 +1,14 @@
 const inputLogin = document.querySelector(".input-login");
 const inputSenha = document.querySelector(".input-senha");
 const repitaSenha = document.querySelector(".repita-input-senha");
+
 const checkBox = document.getElementById("input-checkbox");
+
 const formulario = document.querySelector("form");
 const botaoSubmit = document.querySelector("#botao-padrao");
 const erroLogin = document.querySelector("#erro-login");
 const erroSenha = document.querySelector("#erro-senha");
+
 const erroLogging = document.querySelector("#erro-logar");
 let erroSenhaON = false;
 let erroLoginON = false;
@@ -205,6 +208,7 @@ let erroCriacaoLogin = () => {};
         }
         if (sessionStorage.novaConta === "ON") {
             let avisoNovaConta = document.querySelector(".notificacao-nova-conta");
+            avisoNovaConta.style.display="block";
             sessionStorage.removeItem("novaConta");
             avisoNovaConta.classList.add("novaContaAviso");
         }
@@ -247,6 +251,11 @@ let erroCriacaoLogin = () => {};
             window.open("index.html", "_self");
         }
     }
+    function botaoDeslogar() {
+        localStorage.removeItem("contaLogada");
+        sessionStorage.removeItem("contaLogada");
+        window.open("index.html", "_self");
+    }
 // Efeitos Visuais //
 function displayOn () {
     if (inputLogin.value === "") {
@@ -277,11 +286,19 @@ if (repitaSenha !== null) {
     });
 }
 // Animação Botão //
-function botaoInput() {
+function botaoMaior(elemento) {
     function off () {
-        botao.classList.remove("botao-input");
+        botao.classList.remove("botao-maior");
     }
-    const botao = document.querySelector("button");
-    botao.classList.add("botao-input");
+    const botao = document.querySelector(elemento);
+    botao.classList.add("botao-maior");
+    setTimeout(off, 350);
+};
+function botaoMenor(elemento) {
+    function off () {
+        botao.classList.remove("botao-menor");
+    }
+    const botao = document.querySelector(elemento);
+    botao.classList.add("botao-menor");
     setTimeout(off, 350);
 };

@@ -52,6 +52,7 @@ section.formulario hr {
     width: 100%;
 }
 .notificacao-nova-conta {
+    display: none;
     position: fixed;
     top: -16vh;
     background-color: #ACFFAA;
@@ -164,51 +165,70 @@ div#erro-senha li img, div#erro-login li img, div#erro-logar li img {
 }
 /* Recados */
 main.recados {
-    height: 100vh;
+    width: 96%;
+    background-color: rgba(230, 247, 250, 0.9);
+    border: 5px solid #8CC6FF;
+    border-radius: 10px;
+    margin: 0 2%;
 }
 header {
-    position: relative;
     width: 100%;
 }
 div.logo-menor img {
     float: left;
     width: 15vw;
-    margin: 1.5vw;
+    margin: 1vw;
 }
 div.painel-conta {
     display: flex;
     align-items: center;
     float: right;
-    background-color: blue;
+    background-color: #E6F7FA;
     border-radius: 4vw;
-    margin: 1.5vw;
-    border: 5px solid #2296AA;
+    margin: 3vw 1.5vw 1.5vw 1.5vw;
+    border: 4px solid #79BCFF;
     box-shadow: #000000cc 0 0 3px;
 }
 div.painel-conta h3 {
-    color: #FFFFFF;
+    color: #79BCFF;
     text-shadow: 1.5px 0 0 rgb(0, 0, 0), -1.5px 0 0 rgb(0, 0, 0), 0 1.5px 0 rgb(0, 0, 0),  0 -1.5px 0 rgb(0, 0, 0),  0 0 1.5px rgb(0, 0, 0);
-    font-size: calc(8px + 1vw);
-    margin: 5px;
+    font-size: calc(10px + 1vw);
+    margin: 5px 5px 5px 5px;
 }
 div.icone-usuario {
     display: flex;
     align-items: center;
-    margin: 5px;
 }
 div.icone-usuario img {
     display: block;
     float: left;
     width: 3.5vw;
+    margin: 5px;
 }
 div.botao-sair {
-    border-left: 4px solid #2296AA;
+    border-left: 4px solid #8CC6FF;
     height: 100%;
+    padding: 5px 2px 5px 0px;
+    margin-left: 0.7vw;
 }
 div.botao-sair img {
     display: block;
     width: 3vw;
     margin: 5px;
+    cursor:pointer;
+}
+main.recados section {
+    position: relative;
+    width: 100%;
+    border-bottom: solid #8CC6FF 5px;
+}
+main.recados section h1 {
+    font-family: comicbd;
+    text-align: center;
+    font-size: calc(23px + 1vw);
+    font-weight: lighter;
+    color: #72D1E2;
+    text-shadow: 1.5px 0 0 rgb(0, 0, 0), -1.5px 0 0 rgb(0, 0, 0), 0 1.5px 0 rgb(0, 0, 0),  0 -1.5px 0 rgb(0, 0, 0),  0 0 1.5px rgb(0, 0, 0);
 }
 /* Padrões */
 a {
@@ -306,14 +326,24 @@ footer h3 {
     text-align: center;
 }
 /* Animações */
-.botao-input {
-    animation-name: botao-input;
+.botao-maior {
+    animation-name: botao-maior;
     animation-duration: 0.28s;
     animation-fill-mode: none;
 }
-@keyframes botao-input {
+@keyframes botao-maior {
     0% {transform:scale(1);}
     50% {transform:scale(0.92);}
+    100% {transform:scale(1);}
+}
+.botao-menor {
+    animation-name: botao-menor;
+    animation-duration: 0.28s;
+    animation-fill-mode: none;
+}
+@keyframes botao-menor {
+    0% {transform:scale(1);}
+    50% {transform:scale(0.85);}
     100% {transform:scale(1);}
 }
 .novaContaAviso {
