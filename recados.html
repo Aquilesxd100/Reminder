@@ -23,19 +23,32 @@
         </div>
     </header>
     <main class="recados">
-        <section>
+        <section class="barra-titulo">
             <div class="titulo">
-                <h1>Recados</h1>
+                <h1>Lembretes</h1>
             </div>
-            <div class="botao-adicionar">
-                <img src="img/botao-adicionar.png">
-                <button><h3>Adicionar</h3></button>
+            <div class="secao-adicionar">
+                <div class="botao-adicionar">
+                    <img src="img/botao-adicionar.png" onmouseover="botaoAdicionarHover('ON')" onmouseout="botaoAdicionarHover('OFF')" onclick="adicionar()">
+                    <button onmouseover="botaoAdicionarHover('ON')" onmouseout="botaoAdicionarHover('OFF')" onclick="adicionar()"><h3>Adicionar</h3></button>
+                </div>
             </div>
         </section>
-        <form name="recados">
-
-        </form>
+        <section class="lembretes">
+            <table>
+                <tr>
+                    <th>Nome:</th>
+                    <th>Data:</th>
+                    <th>Hora:</th>
+                    <th>[Editar] [Apagar]</th>
+                </tr>
+                <tr>
+                    <th colspan="4">Descrição:</th>
+                </tr>
+            </table>
+        </section>
     </main>
+    <footer class="recados"></footer>
     <script src="recados.js"></script>
 </body>
 </html>
