@@ -18,7 +18,7 @@
                 <h3>Aquilesxd</h3>
             </div>
             <div class="botao-sair">
-                <img src="img/erro.png" onclick="botaoMenor('div.botao-sair img'); botaoDeslogar()">
+                <img src="img/erro.png" onclick="botaoMenor(this); botaoDeslogar()">
             </div>
         </div>
     </header>
@@ -34,16 +34,38 @@
                 </div>
             </div>
         </section>
+        <section class="menu lembretes">
+            <form>
+                <table>
+                    <tr>
+                        <th class="acao"><span>Ação: </span><input type="text" required id="input-acao"></th>
+                        <th><span>Data: </span><input type="date" required id="input-data"></th>
+                        <th><span>Hora(s): </span><input type="time" required id="input-hora"></th>
+                    </tr>
+                    <tr>
+                        <th colspan="4" class="sombra"><span>Descrição: </span><textarea required></textarea></th>
+                    </tr>
+                </table>
+                <button>Confirmar</button>
+                <button>Cancelar</button>
+            </form>
+        </section>
         <section class="lembretes">
             <table>
-                <tr>
-                    <th>Nome:</th>
-                    <th>Data:</th>
-                    <th>Hora:</th>
-                    <th>[Editar] [Apagar]</th>
+                <tr class="espacamento"> 
+                    <th colspan="4"></th>
                 </tr>
                 <tr>
-                    <th colspan="4">Descrição:</th>
+                    <th class="acao"><span>Ação: </span>Arrumar a cama</th>
+                    <th><span>Data: </span>21/11/2022</th>
+                    <th><span>Hora(s): </span>19:00</th>
+                    <th class="botoes sombra">
+                        <button class="botao-editar" onclick="editar(); botaoMaior(this)">Editar</button>
+                        <button class="botao-apagar" onclick="apagar(); botaoMaior(this)">Apagar</button>
+                    </th>
+                </tr>
+                <tr>
+                    <th colspan="4" class="sombra"><span>Descrição: </span>Dobrar as cobertas, tirar os travesseiros e colocar o lençol.</th>
                 </tr>
             </table>
         </section>

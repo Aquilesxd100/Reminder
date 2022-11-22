@@ -16,6 +16,10 @@ function botaoDeslogar() {
     sessionStorage.removeItem("contaLogada");
     window.open("index.html", "_self");
 }
+function editar() {
+}
+function apagar() {
+}
 // Visual //
 function botaoAdicionarHover(modo) {
     if (modo === "ON") {
@@ -34,17 +38,15 @@ function botaoAdicionarHover(modo) {
 // Animação Botão //
 function botaoMaior(elemento) {
     function off () {
-        botao.classList.remove("botao-maior");
+        elemento.classList.remove("botao-maior");
     }
-    const botao = document.querySelector(elemento);
-    botao.classList.add("botao-maior");
+    elemento.classList.add("botao-maior");
     setTimeout(off, 350);
 };
 function botaoMenor(elemento) {
     function off () {
-        botao.classList.remove("botao-menor");
+        elemento.classList.remove("botao-menor");
     }
-    const botao = document.querySelector(elemento);
-    botao.classList.add("botao-menor");
+    elemento.classList.add("botao-menor");
     setTimeout(off, 350);
 };

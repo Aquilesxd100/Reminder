@@ -290,17 +290,110 @@ section.lembretes {
     flex-direction: column;
     align-items: center;
 }
+/* Estilização Tabela Padrão */
 section.lembretes table {
     width: 96%;
     text-align: left;
     border-collapse: collapse;
-    margin: 1%;
-    background-image: url("img/fundo-anotacao.jpg");
-    background-repeat: repeat-x;
+    margin: 0 1% 1% 1%;
+    color: #F0F2FB;
+    text-shadow: 1.5px 0 0 rgb(0, 0, 0), -1.5px 0 0 rgb(0, 0, 0), 0 1.5px 0 rgb(0, 0, 0),  0 -1.5px 0 rgb(0, 0, 0),  0 0 1.5px rgb(0, 0, 0);
+    font-family: comic;
+    font-weight: lighter;
+    font-size: calc(7px + 1vw);
+}
+section.lembretes table span {
+    font-size: calc(10px + 1vw);
+    font-family: comicbd;
+    color: #BAC7ED;
 }
 section.lembretes table th {
-    border: solid black 3px;
+    border: solid #859CDF 4px;
+    padding: 5px 10px;
+}
+section.lembretes table th.sombra {
+    box-shadow: 4px 3.5px 3.5px #000000;
+}
+section.lembretes table th button {
+    font-family: comicbd;
+    font-size: calc(7px + 1vw);
+    text-shadow: 1.5px 0 0 rgb(0, 0, 0), -1.5px 0 0 rgb(0, 0, 0), 0 1.5px 0 rgb(0, 0, 0),  0 -1.5px 0 rgb(0, 0, 0),  0 0 1.5px rgb(0, 0, 0);
+    color: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    box-shadow: 1.5px 1px 1px #000000; 
+    padding: 0.1vw 0.5vw 0.4vw 0.5vw;
+    letter-spacing: 0.3px;
+    margin: 0 0.1vw;
+}
+body section.lembretes table th button:hover {
+    filter: brightness(1.1);
+    cursor: pointer;
+}
+section.lembretes table th.botoes {
+    text-align: center;
+    width: 18%;
+    min-width: 190px;
+} 
+section.lembretes table th button.botao-editar {
+    background-color: #FFCC00;
+    filter: brightness(0.95);
+}
+section.lembretes table th button.botao-apagar {
+    background-color: #e92b15;
+    filter: brightness(0.9);
+} 
+section.lembretes table th.acao {
+    width: 40%;
+}
+section.lembretes table tr {
+    background-image: url("img/fundo-lembretes.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+section.lembretes table tr.espacamento {
+    background-image: none;
+}
+section.lembretes table tr.espacamento th {
+    border: none;
     padding: 5px;
+    height: 5vh;
+}
+section.menu form {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1001;
+}
+section.menu input, section.menu textarea {
+    font-family: comic;
+    font-size: calc(5px + 1.4vw);
+    width: auto;
+    height: 3vw;
+    margin: 0;
+    padding: 5px 5px;
+    border: 2px solid #859CDF;
+    box-shadow: 2px 1.5px 1.5px; 
+    background-color: #E6F7FA;
+}
+section.menu input:focus, section.menu textarea:focus {
+    outline: none;
+}
+section.menu table textarea {
+    width: 80%;
+    height: 12vh;
+}
+body section.menu textarea {
+    width: 100%;
+    border: 2px solid #859CDF;
+    padding: 0 5px;
 }
 footer.recados {
     position: relative;
@@ -412,7 +505,7 @@ footer h3 {
 }
 @keyframes botao-maior {
     0% {transform:scale(1);}
-    50% {transform:scale(0.92);}
+    50% {transform:scale(0.92); }
     100% {transform:scale(1);}
 }
 .botao-menor {
