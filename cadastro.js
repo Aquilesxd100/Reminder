@@ -21,6 +21,7 @@ formulario.addEventListener("submit", (event) => {
         bancoDados.push({
             login: inputLogin.value,
             senha: inputSenha.value,
+            lembretes: [],
         });
         localStorage.contas = JSON.stringify(bancoDados);
         sessionStorage.setItem("novaConta", "ON");

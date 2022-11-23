@@ -205,6 +205,7 @@ div.painel-conta h3 {
     text-shadow: 1.5px 0 0 rgb(0, 0, 0), -1.5px 0 0 rgb(0, 0, 0), 0 1.5px 0 rgb(0, 0, 0),  0 -1.5px 0 rgb(0, 0, 0),  0 0 1.5px rgb(0, 0, 0);
     font-size: calc(10px + 1vw);
     margin: 5px 5px 5px 5px;
+    letter-spacing: 0.5px;
 }
 div.icone-usuario {
     display: flex;
@@ -300,10 +301,10 @@ section.lembretes table {
     text-shadow: 1.5px 0 0 rgb(0, 0, 0), -1.5px 0 0 rgb(0, 0, 0), 0 1.5px 0 rgb(0, 0, 0),  0 -1.5px 0 rgb(0, 0, 0),  0 0 1.5px rgb(0, 0, 0);
     font-family: comic;
     font-weight: lighter;
-    font-size: calc(7px + 1vw);
+    font-size: calc(2px + 1.4vw);
 }
 section.lembretes table span {
-    font-size: calc(10px + 1vw);
+    font-size: calc(5px + 1.4vw);
     font-family: comicbd;
     color: #BAC7ED;
 }
@@ -338,13 +339,15 @@ section.lembretes table th.botoes {
 section.lembretes table th button.botao-editar {
     background-color: #FFCC00;
     filter: brightness(0.95);
+    transform: translateZ(0);
 }
 section.lembretes table th button.botao-apagar {
     background-color: #e92b15;
     filter: brightness(0.9);
+    transform: translateZ(0);
 } 
 section.lembretes table th.acao {
-    width: 40%;
+    max-width: 39%;
 }
 section.lembretes table tr {
     background-image: url("img/fundo-lembretes.jpg");
@@ -358,6 +361,13 @@ section.lembretes table tr.espacamento th {
     border: none;
     padding: 5px;
     height: 5vh;
+}
+section.menu {
+    position: fixed;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    z-index: 2000;
 }
 section.menu form {
     position: fixed;
@@ -374,7 +384,8 @@ section.menu form {
 }
 section.menu input, section.menu textarea {
     font-family: comic;
-    font-size: calc(5px + 1.4vw);
+    font-size: calc(3px + 1.4vw);
+    text-transform: lowercase;
     width: auto;
     height: 3vw;
     margin: 0;
@@ -383,17 +394,71 @@ section.menu input, section.menu textarea {
     box-shadow: 2px 1.5px 1.5px; 
     background-color: #E6F7FA;
 }
+section.menu input#input-acao {
+    width: 85%;
+}
 section.menu input:focus, section.menu textarea:focus {
     outline: none;
 }
 section.menu table textarea {
     width: 80%;
     height: 12vh;
+    min-height: 80px;
 }
 body section.menu textarea {
     width: 100%;
     border: 2px solid #859CDF;
     padding: 0 5px;
+    resize: none;
+}
+section.menu form div.botoes {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+section.menu button {
+    font-family: comicbd;
+    font-size: calc(11px + 1.2vw);
+    text-shadow: 1.5px 0 0 rgb(0, 0, 0), -1.5px 0 0 rgb(0, 0, 0), 0 1.5px 0 rgb(0, 0, 0),  0 -1.5px 0 rgb(0, 0, 0),  0 0 1.5px rgb(0, 0, 0);
+    color: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    box-shadow: 1.5px 1px 1px #000000; 
+    padding: 0.1vw 6vw 0.4vw 6vw;
+    letter-spacing: 0.3px;
+    margin: 0 0.5%;
+}
+section.menu button.botao-confirmar {
+    background-color: #0de80d;
+    filter: brightness(0.8);
+}
+section.menu button.botao-cancelar {
+    background-color: #e92b15;
+    filter: brightness(0.9);
+} 
+section.menu form button:hover {
+    filter: brightness(1.1);
+    cursor: pointer;
+}
+section.lembretes div.aviso-base {
+    width: 100%;
+    height: 100%;
+    min-height: 54vh;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+section.lembretes div.aviso-base div {
+    padding: 9.5vw 4vw 5.5vw 4vw;
+    background-image: url("img/nuvem.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+section.lembretes div h2 {
+    font-size: calc(11px + 1vw);
+    color: #FFFFFF;
+    letter-spacing: 0.5px;
 }
 footer.recados {
     position: relative;
