@@ -39,7 +39,7 @@
                 <table>
                     <tr>
                         <th class="acao"><span>Ação: </span><input type="text" maxlength="21" required id="input-acao"></th>
-                        <th><span>Data: </span><input type="date" required id="input-data"></th>
+                        <th><span>Data: </span><input type="date" min="2022-11-23" max="2100-11-23" maxlength="8" required id="input-data"></th>
                         <th><span>Hora(s): </span><input type="time" required id="input-hora"></th>
                     </tr>
                     <tr>
@@ -47,7 +47,7 @@
                     </tr>
                 </table>
                 <div class="botoes">
-                    <button type="button" class="botao-confirmar" onclick="entradaLembrete(); botaoMaior(this)">Confirmar</button>
+                    <button class="botao-confirmar" onclick="botaoMaior(this)">Confirmar</button>
                     <button type="button" class="botao-cancelar" onclick="cancelaLembrete(); botaoMaior(this)">Cancelar</button>
                 </div>
             </form>

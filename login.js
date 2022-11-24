@@ -21,13 +21,15 @@ window.addEventListener("click", (event) => {
 if (sessionStorage.contaLogada || localStorage.contaLogada) {
     window.open("recados.html", "_self");
 }
-if (sessionStorage.novaConta === "ON") {
-    let avisoNovaConta = document.querySelector(".notificacao-nova-conta");
-    avisoNovaConta.style.display="block";
-    sessionStorage.removeItem("novaConta");
-    avisoNovaConta.classList.add("novaContaAviso");
+if (sessionStorage.notificacao) {
+    let aviso = document.querySelector(".notificacao");
+    let spanMensagem = document.getElementById("notificacao-mensagem");
+    aviso.style.display="block";
+    spanMensagem.innerText = sessionStorage.notificacao;
+    sessionStorage.removeItem("notificacao");
+    aviso.classList.add("novaContaAviso");
     setTimeout(() => {
-        avisoNovaConta.style.display="none";  
+        aviso.style.display="none";  
     }, 5500)
 }
 formulario.addEventListener("submit", (event) => {

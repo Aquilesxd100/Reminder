@@ -24,7 +24,7 @@ formulario.addEventListener("submit", (event) => {
             lembretes: [],
         });
         localStorage.contas = JSON.stringify(bancoDados);
-        sessionStorage.setItem("novaConta", "ON");
+        sessionStorage.setItem("notificacao", "Conta criada com sucesso!");
         erroLogin.style.opacity="0";
         erroSenha.style.opacity="0";
         window.open("index.html", "_self");

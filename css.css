@@ -51,7 +51,7 @@ section.formulario hr {
     margin-bottom: 3%;
     width: 100%;
 }
-.notificacao-nova-conta {
+.notificacao {
     display: none;
     position: fixed;
     top: -16vh;
@@ -65,21 +65,21 @@ section.formulario hr {
     box-shadow: rgba(0,0,0,0.9) 0 0 20px;
     border: 4px solid #39E600;
 }
-.notificacao-nova-conta h3 {
+.notificacao h3 {
     font-size: calc(11px + 1vw);
     color: #4FFF4F;
     letter-spacing: 0.1vw;
     text-align: center;
     margin-top: calc(8.5vh - 8px);
 }
-.notificacao-nova-conta h3 img {
+.notificacao h3 img {
     position: relative;
     top: 0.3vw;
     margin-right: 5px;
     width: calc(1.5vw + 2px);
     margin: 0 5px;
 }
-.notificacao-nova-conta span {
+.notificacao span {
     margin: 0 5px;
 }
 div.manter-logado {

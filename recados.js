@@ -11,6 +11,7 @@ const nomeConta = document.getElementById("nome-usuario");
 const localLembretes = document.getElementById("tabela-lembretes");
 const avisoLembretesVazio = document.querySelector(".aviso-base");
 let logado = {};
+let menu = ["", ""];
 if (!sessionStorage.contaLogada && !localStorage.contaLogada) {
     window.open("index.html", "_self");
 }
@@ -33,7 +34,8 @@ function listarLembretes() {
         <tr class="espacamento"> 
             <th colspan="4"></th>
         </tr>`;
-        for (lembrete of bancoDados[posicao].lembretes) {
+        let lembretesOrganizados = ordenarPorData(bancoDados[posicao].lembretes);
+        for (lembrete of lembretesOrganizados) {
             localLembretes.innerHTML +=            
             `<tr>
                 <th class="acao"><span>Ação: </span>${lembrete.acao}</th>
@@ -63,6 +65,7 @@ function adicionarLembrete() {
     }
     divAdicionar.classList.add("botao-maior");
     setTimeout(off, 350);
+    menu[0] = "adicao";
     menuLembretesON(true);
 }
 function botaoDeslogar() {
@@ -70,34 +73,80 @@ function botaoDeslogar() {
     sessionStorage.removeItem("contaLogada");
     window.open("index.html", "_self");
 }
-function editar() {
-    menuLembretesON(true);
-}
-function apagar() {
-
-}
-function entradaLembrete() {
+function editar(id) {
     let bancoDados = JSON.parse(localStorage.contas);
     let posicao = logado.posicao;
-    bancoDados[posicao].lembretes.push({
-        id: geradorID(),
-        acao: inicialMaiuscula(inputAcao.value),
-        data: (inputData.value).replaceAll("-", "/"),
-        hora: inputHora.value,
-        descricao: inicialMaiuscula(inputDescricao.value),
-    }); 
+    let lembretes = bancoDados[posicao].lembretes;
+    menu[0] = "edicao";
+    menu[1] = id;
+    for (lembrete of lembretes) {
+        if (lembrete.id === id) {
+            inputAcao.value = lembrete.acao;
+            inputData.value = conversorData(lembrete.data, false);
+            inputHora.value = lembrete.hora;
+            inputDescricao.value = lembrete.descricao;
+            break;
+        }
+    }
+    menuLembretesON(true);
+}
+function apagar(id) {
+    let bancoDados = JSON.parse(localStorage.contas);
+    let posicao = logado.posicao;
+    let lembretes = bancoDados[posicao].lembretes.filter(lembrete => lembrete.id !== id);
+    bancoDados[posicao].lembretes = lembretes;
     localStorage.contas = JSON.stringify(bancoDados);
-    console.log(bancoDados[posicao].lembretes);
-    menuLembretesON(false);
-    formulario.reset();
     listarLembretes();
 }
+formulario.addEventListener("submit", (event) => {
+    event.preventDefault();
+    let bancoDados = JSON.parse(localStorage.contas);
+    let posicao = logado.posicao;
+    if (menu[0] === "adicao") {
+        bancoDados[posicao].lembretes.push({
+            id: geradorID(),
+            acao: inicialMaiuscula(inputAcao.value),
+            data: conversorData(inputData.value, true),
+            hora: inputHora.value,
+            descricao: inicialMaiuscula(inputDescricao.value),
+        }); 
+        localStorage.contas = JSON.stringify(bancoDados);
+        menuLembretesON(false);
+        formulario.reset();
+        menu[0] = "";
+        menu[1] = "";
+        listarLembretes();
+    }
+    else if (menu[0] === "edicao") {
+        bancoDados[posicao].lembretes = bancoDados[posicao].lembretes.map((lembrete) => {
+            if (lembrete.id === menu[1]) {
+                return {
+                    id: menu[1],
+                    acao: inicialMaiuscula(inputAcao.value),
+                    data: conversorData(inputData.value, true),
+                    hora: inputHora.value,
+                    descricao: inicialMaiuscula(inputDescricao.value),
+                }
+            }
+            return lembrete;
+        });
+        menu[0] = "";
+        menu[1] = "";
+        formulario.reset();
+        menuLembretesON(false);
+        localStorage.contas = JSON.stringify(bancoDados);
+        listarLembretes();
+    }
+})
 function cancelaLembrete() {
     menuLembretesON(false);
+    menu[0] = "";
+    menu[1] = "";
     formulario.reset();
 }
 // Funções Auxiliares //
 function inicialMaiuscula(texto) {
+    texto = texto.toLowerCase();
     let letra1 = texto.substring(0, 1);
     return texto.replace(letra1, (letra1.toUpperCase()));
 }
@@ -110,8 +159,113 @@ function geradorID() {
     localStorage.identificador = contador;
     return ("id" + contador);
 }
+function conversorData(data, tipo) {
+    if (tipo === true) {
+        let ano = data.substring(0, 4);
+        let mes = data.substring(5, 7);
+        let dia = data.substring(8, 10);
+        return `${dia}/${mes}/${ano}`;
+    }
+    else {
+        let dia = data.substring(0, 2);
+        let mes = data.substring(3, 5);
+        let ano = data.substring(6, 10);
+        return `${ano}-${mes}-${dia}`;
+    }
+}
+function ordenarPorData(lembretes) {
+    let lembretesFiltrados = [];
+    while (lembretes.length !== 0) {
+        let lembreteMenor = lembretes[0];
+        for (lembrete of lembretes) {
+            let minuto = Number((lembrete.hora).substring(4, 5));
+            let menorMinuto = Number((lembreteMenor.hora).substring(4, 5))
+            if (minuto < menorMinuto) {
+                menorMinuto = minuto;
+                lembreteMenor = lembrete;
+            }
+        }
+        lembretesFiltrados.push(lembreteMenor)
+        lembretes = lembretes.filter((lembrete) => lembrete.id !== lembreteMenor.id);
+    }
+    lembretes = lembretesFiltrados;
+    lembretesFiltrados = [];
+    while (lembretes.length !== 0) {
+        let lembreteMenor = lembretes[0];
+        for (lembrete of lembretes) {
+            let hora = Number((lembrete.hora).substring(0, 2));
+            let menorHora = Number((lembreteMenor.hora).substring(0, 2))
+            if (hora < menorHora) {
+                menorHora = hora;
+                lembreteMenor = lembrete;
+            }
+        }
+        lembretesFiltrados.push(lembreteMenor)
+        lembretes = lembretes.filter((lembrete) => lembrete.id !== lembreteMenor.id);
+    }
+    lembretes = lembretesFiltrados;
+    lembretesFiltrados = [];
+    while (lembretes.length !== 0) {
+        let lembreteMenor = lembretes[0];
+        for (lembrete of lembretes) {
+            let dia = Number((lembrete.data).substring(0, 2));
+            let menorDia = Number((lembreteMenor.data).substring(0, 2))
+            if (dia < menorDia) {
+                menorDia = dia;
+                lembreteMenor = lembrete;
+            }
+        }
+        lembretesFiltrados.push(lembreteMenor)
+        lembretes = lembretes.filter((lembrete) => lembrete.id !== lembreteMenor.id);
+    }
+    lembretes = lembretesFiltrados;
+    lembretesFiltrados = [];
+    while (lembretes.length !== 0) {
+        let lembreteMenor = lembretes[0];
+        for (lembrete of lembretes) {
+            let mes = Number((lembrete.data).substring(3, 5));
+            let menorMes = Number((lembreteMenor.data).substring(3, 5))
+            if (mes < menorMes) {
+                menorMes = mes;
+                lembreteMenor = lembrete;
+            }
+        }
+        lembretesFiltrados.push(lembreteMenor)
+        lembretes = lembretes.filter((lembrete) => lembrete.id !== lembreteMenor.id);
+    }
+    lembretes = lembretesFiltrados;
+    lembretesFiltrados = [];
+    while (lembretes.length !== 0) {
+        let lembreteMenor = lembretes[0];
+        for (lembrete of lembretes) {
+            let ano = Number((lembrete.data).substring(6, 10));
+            let menorAno = Number((lembreteMenor.data).substring(6, 10))
+            if (ano < menorAno) {
+                menorAno = ano;
+                lembreteMenor = lembrete;
+            }
+        }
+        lembretesFiltrados.push(lembreteMenor)
+        lembretes = lembretes.filter((lembrete) => lembrete.id !== lembreteMenor.id);
+    }
+    return lembretesFiltrados;
+}
+inputData.addEventListener("change", () => {
+    const horario = new Date();
+    const diaAtual = (inputData.value).substring(8, 10);
+    const mesAtual = (inputData.value).substring(5, 7);
+    const anoAtual = (inputData.value).substring(0, 4);
+    if (diaAtual == horario.getDate() && mesAtual == Number(horario.getMonth()) + 1 && anoAtual == horario.getFullYear()) {
+        inputHora.setAttribute("min", `${horario.getHours()}:${horario.getMinutes()}`);
+    }
+    else {
+        inputHora.removeAttribute("min");
+    }
+})
 function menuLembretesON(tipo) {
     if (tipo === true) {
+        const horario = new Date();
+        inputData.setAttribute("min", `${horario.getFullYear()}-${Number(horario.getMonth()) + 1}-${horario.getDate()}`);
         menuLembretes.style.opacity="1";
         menuLembretes.style.pointerEvents="all";
     }
