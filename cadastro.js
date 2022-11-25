@@ -173,12 +173,6 @@ function validacaoSenha() {
     }
     return validacao;
 }
-
-
-function deletaConta() {
-    localStorage.clear();
-    sessionStorage.clear();
-}
 // Efeitos Visuais //
 function displayOn () {
     if (inputLogin.value === "") {

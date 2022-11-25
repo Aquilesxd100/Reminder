@@ -217,19 +217,23 @@ div.icone-usuario img {
     width: 3.5vw;
     margin: 5px;
 }
-div.botao-sair {
+div.botao-sair, div.botao-exclusao {
     border-left: 4px solid #75b6f8;
     height: 100%;
     padding: 5px 2px 5px 0px;
     margin-left: 0.7vw;
 }
-div.botao-sair img {
+div.painel-conta div.botao-exclusao {
+    border: none;
+    margin-left: 0;
+}
+div.botao-sair img, div.botao-exclusao img {
     display: block;
     width: 3vw;
-    margin: 5px;
+    margin: 5px 2px;
     cursor: pointer;
 }
-div.botao-sair img:hover {
+div.botao-sair img:hover, div.botao-exclusao img:hover {
     filter: brightness(1.3);
     transform: scale(1.05);
 }
@@ -389,13 +393,13 @@ section.menu input, section.menu textarea {
     width: auto;
     height: 3vw;
     margin: 0;
-    padding: 5px 5px;
+    padding: 0px 5px;
     border: 2px solid #859CDF;
     box-shadow: 2px 1.5px 1.5px; 
     background-color: #E6F7FA;
 }
 section.menu input#input-acao {
-    width: 85%;
+    width: 80%;
 }
 section.menu input:focus, section.menu textarea:focus {
     outline: none;
@@ -468,6 +472,9 @@ footer.recados {
     width: auto;
 }
 /* Padrões */
+.fundo-travado {
+    overflow: hidden;
+}
 a {
     color: #00FFFF;
     text-underline-position: under;
@@ -512,10 +519,14 @@ section.formulario form input {
     box-shadow: 2px 1.5px 1.5px; 
     background-color: #E6F7FA;
 }
+input.input-login {
+    text-transform: lowercase;
+}
 section.formulario form input::placeholder {
     text-align: center;
     font-family: comic;
     color: #BBBBBB;
+    text-transform: none;
 }
 section.formulario form input:focus {
     outline: none;

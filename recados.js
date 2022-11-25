@@ -1,3 +1,4 @@
+const body = document.querySelector("body");
 const botaoAdicionar = document.querySelector(".botao-adicionar button");
 const imgBotaoAdicionar = document.querySelector(".botao-adicionar img");
 const formulario = document.querySelector("form");
@@ -144,6 +145,15 @@ function cancelaLembrete() {
     menu[1] = "";
     formulario.reset();
 }
+function excluirConta() {
+    let bancoDados = JSON.parse(localStorage.contas);
+    bancoDados = bancoDados.filter((conta) => conta.login !== logado.login)
+    localStorage.contas = JSON.stringify(bancoDados);
+    sessionStorage.notificacao = "Conta excluída com sucesso!";
+    sessionStorage.removeItem("contaLogada");
+    localStorage.removeItem("contaLogada");
+    window.open("index.html", "_self");
+}
 // Funções Auxiliares //
 function inicialMaiuscula(texto) {
     texto = texto.toLowerCase();
@@ -268,10 +278,12 @@ function menuLembretesON(tipo) {
         inputData.setAttribute("min", `${horario.getFullYear()}-${Number(horario.getMonth()) + 1}-${horario.getDate()}`);
         menuLembretes.style.opacity="1";
         menuLembretes.style.pointerEvents="all";
+        body.classList.add("fundo-travado");
     }
     else {
         menuLembretes.style.opacity="0";
         menuLembretes.style.pointerEvents="none";
+        body.classList.remove("fundo-travado");
     }
 }
 // Visual //
