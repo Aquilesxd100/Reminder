@@ -11,6 +11,7 @@ const divAdicionar = document.querySelector(".botao-adicionar");
 const nomeConta = document.getElementById("nome-usuario");
 const localLembretes = document.getElementById("tabela-lembretes");
 const avisoLembretesVazio = document.querySelector(".aviso-base");
+const avisoExclusaoConta = document.querySelector(".notifi-exclusao-conta")
 let logado = {};
 let menu = ["", ""];
 if (!sessionStorage.contaLogada && !localStorage.contaLogada) {
@@ -144,6 +145,16 @@ function cancelaLembrete() {
     menu[0] = "";
     menu[1] = "";
     formulario.reset();
+}
+function notificacaoExclusaoConta(tipo) {
+    if (tipo === true) {
+        avisoExclusaoConta.style.opacity="1";
+        avisoExclusaoConta.style.pointerEvents="all";
+    }
+    else {
+        avisoExclusaoConta.style.opacity="0";
+        avisoExclusaoConta.style.pointerEvents="none";
+    }
 }
 function excluirConta() {
     let bancoDados = JSON.parse(localStorage.contas);

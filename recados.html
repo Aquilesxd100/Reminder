@@ -21,7 +21,7 @@
                 <img src="img/erro.png" onclick="botaoMenor(this); botaoDeslogar()">
             </div>
             <div class="botao-exclusao">
-                <img src="img/exclusao.png" onclick="botaoMenor(this); excluirConta()">
+                <img src="img/exclusao.png" onclick="botaoMenor(this); notificacaoExclusaoConta(true)">
             </div>
         </div>
     </header>
@@ -35,6 +35,15 @@
                     <img src="img/botao-adicionar.png" onmouseover="botaoAdicionarHover('ON')" onmouseout="botaoAdicionarHover('OFF')" onclick="adicionarLembrete()">
                     <button onmouseover="botaoAdicionarHover('ON')" onmouseout="botaoAdicionarHover('OFF')" onclick="adicionarLembrete()"><h3>Adicionar</h3></button>
                 </div>
+            </div>
+        </section>
+        <section class="notifi-exclusao-conta">
+            <div class="aviso-exclusao">
+                <h2>Tem certeza que deseja excluir sua conta?</h2>
+            </div>
+            <div class="botoes">
+                <button class="botao-confirmar" onclick="botaoMaior(this); excluirConta()">Confirmar</button>
+                <button type="button" class="botao-cancelar" onclick="notificacaoExclusaoConta(false); botaoMaior(this)">Cancelar</button>
             </div>
         </section>
         <section class="menu lembretes">
