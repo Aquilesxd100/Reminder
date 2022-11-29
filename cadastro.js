@@ -9,6 +9,9 @@ let erroSenhaON = false;
 let erroLoginON = false;
 let erroCriacaoSenha = () => {};
 let erroCriacaoLogin = () => {};
+if (sessionStorage.contaLogada || localStorage.contaLogada) {
+    window.open("index.html", "_self");
+}
 formulario.addEventListener("submit", (event) => {
     event.preventDefault();
     let bancoDados = [];

@@ -38,24 +38,24 @@
             </div>
         </section>
         <section class="notifi-exclusao-conta">
-            <div class="aviso-exclusao">
+            <div class="main-exclusao">
                 <h2>Tem certeza que deseja excluir sua conta?</h2>
-            </div>
-            <div class="botoes">
-                <button class="botao-confirmar" onclick="botaoMaior(this); excluirConta()">Confirmar</button>
-                <button type="button" class="botao-cancelar" onclick="notificacaoExclusaoConta(false); botaoMaior(this)">Cancelar</button>
+                <div class="botoes">
+                    <button class="botao-confirmar" onclick="botaoMaior(this); excluirConta()">Confirmar</button>
+                    <button type="button" class="botao-cancelar" onclick="notificacaoExclusaoConta(false); botaoMaior(this)">Cancelar</button>
+                </div>
             </div>
         </section>
         <section class="menu lembretes">
             <form>
                 <table>
                     <tr>
-                        <th class="acao"><span>Ação: </span><input type="text" maxlength="21" required id="input-acao"></th>
+                        <th class="acao"><span>Ação: </span><input type="text" maxlength="21" required autocomplete="off" id="input-acao"></th>
                         <th><span>Data: </span><input type="date" min="2022-11-23" max="2100-11-23" maxlength="8" required id="input-data"></th>
                         <th><span>Hora(s): </span><input type="time" required id="input-hora"></th>
                     </tr>
                     <tr>
-                        <th colspan="4" class="sombra"><span>Descrição: </span><textarea maxlength="66" required id="input-descricao"></textarea></th>
+                        <th colspan="4" class="sombra"><span>Descrição: </span><textarea maxlength="66" required autocomplete="off" id="input-descricao"></textarea></th>
                     </tr>
                 </table>
                 <div class="botoes">

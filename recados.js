@@ -150,10 +150,12 @@ function notificacaoExclusaoConta(tipo) {
     if (tipo === true) {
         avisoExclusaoConta.style.opacity="1";
         avisoExclusaoConta.style.pointerEvents="all";
+        body.classList.add("fundo-travado");
     }
     else {
         avisoExclusaoConta.style.opacity="0";
         avisoExclusaoConta.style.pointerEvents="none";
+        body.classList.remove("fundo-travado");
     }
 }
 function excluirConta() {
